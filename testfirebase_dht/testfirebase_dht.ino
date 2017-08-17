@@ -83,24 +83,44 @@ void loop() {
   }else{
     led_status = 0;
   }
-
-  StaticJsonBuffer<200> jsonBuffer;
-  JsonObject& root = jsonBuffer.createObject();
-  root["temperature"] = t;
-  root["humidity"] = h;
-  root["LEDStatus"] = led_status;
-  root["PIRStatus"] = pirValue;
-
-  // append a new value to /logDHT
-  String name = Firebase.push("logDHT", root);
-  // handle error
+  Firebase.setFloat("temperature", t);
   if (Firebase.failed()) {
-      Serial.print("pushing /logDHT failed:");
+      Serial.print("pushing /temperature failed:");
       Serial.println(Firebase.error());  
       return;
   }
-  Serial.print("pushed: /logDHT/");
-  Serial.println(name);
+  Serial.print("pushed: /temperature/");
+  //Serial.println(name);
+
+  // append a new value to /temperature
+  Firebase.setFloat("humidity", h);
+  if (Firebase.failed()) {
+      Serial.print("pushing /humidity failed:");
+      Serial.println(Firebase.error());  
+      return;
+  }
+  Serial.print("pushed: /humidity/");
+  //Serial.println(name);
+
+  Firebase.setInt("LEDStastus", led_status);
+  if (Firebase.failed()) {
+      Serial.print("pushing /status led failed:");
+      Serial.println(Firebase.error());  
+      return;
+  }
+  Serial.print("pushed: /status_led/");
+  //Serial.println(name);
+
+  
+  Firebase.setFloat("PIRSensor", pirValue);
+  if (Firebase.failed()) {
+      Serial.print("pushing /pirsensor failed:");
+      Serial.println(Firebase.error());  
+      return;
+  }
+  Serial.print("pushed: /pirsensor/");
+  
+  
   Serial.print("temperature is ");
   Serial.print(t);
   Serial.print(" *C ");
