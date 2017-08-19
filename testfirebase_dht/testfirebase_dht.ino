@@ -27,7 +27,7 @@
 //#define UpperThreshold 550
 //#define LowerThreshold 500
 const int sensor1 = D1;
-//const int sensor2 = D2;
+//const int pirinput2 = D2;
 const int ledpin = D5;
 const int ledpin2 = D6;
 const int ledpin3 = D7;
@@ -224,8 +224,6 @@ void loop() {
       Serial.println(Firebase.error());  
       return;
   }
-  
-
   
   delay(5000);  
 }
