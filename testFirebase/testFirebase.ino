@@ -6,8 +6,8 @@
 #define FIREBASE_AUTH "tY9f5ajwULW1FWdEjSitsjAKvZUHZZs9xZb9ZLfx"
 
 // Config connect WiFi
-#define WIFI_SSID "IThunnathorn"
-#define WIFI_PASSWORD "mcc12azy"
+#define WIFI_SSID "Lenovo K6 NOTE"
+#define WIFI_PASSWORD "12345678"
 
 int i = 0;
 
